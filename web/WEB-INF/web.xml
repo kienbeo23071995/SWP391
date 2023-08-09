@@ -13,15 +13,15 @@
     </servlet>
     <servlet>
         <servlet-name>Controller_Register</servlet-name>
-        <servlet-class>controller.Controller_Register</servlet-class>
+        <servlet-class>controller.Account.Controller_Register</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Change_Password</servlet-name>
-        <servlet-class>controller.Controller_Change_Password</servlet-class>
+        <servlet-class>controller.Account.Controller_Change_Password</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Change_Information</servlet-name>
-        <servlet-class>controller.Controller_Change_Information</servlet-class>
+        <servlet-class>controller.Account.Controller_Change_Information</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Forgot_Password</servlet-name>
@@ -41,19 +41,19 @@
     </servlet>
     <servlet>
         <servlet-name>Controller_FeedbackSystem</servlet-name>
-        <servlet-class>controller.Controller_FeedbackSystem</servlet-class>
+        <servlet-class>controller.Feedback.Controller_FeedbackSystem</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_DeleteFeedbackSystem</servlet-name>
-        <servlet-class>controller.Controller_DeleteFeedbackSystem</servlet-class>
+        <servlet-class>controller.Feedback.Controller_DeleteFeedbackSystem</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_EditFeedbackSystem</servlet-name>
-        <servlet-class>controller.Controller_EditFeedbackSystem</servlet-class>
+        <servlet-class>controller.Feedback.Controller_EditFeedbackSystem</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Change_PhoneNumber</servlet-name>
-        <servlet-class>controller.Controller_Change_PhoneNumber</servlet-class>
+        <servlet-class>controller.Account.Controller_Change_PhoneNumber</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_MailChangePhoneNumber</servlet-name>
@@ -61,11 +61,11 @@
     </servlet>
     <servlet>
         <servlet-name>Controller_List_Blog</servlet-name>
-        <servlet-class>controller.Controller_List_Blog</servlet-class>
+        <servlet-class>controller.Blog.Controller_List_Blog</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Change_Status</servlet-name>
-        <servlet-class>controller.Controller_Change_Status</servlet-class>
+        <servlet-class>controller.Account.Controller_Change_Status</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Favourite_House</servlet-name>
@@ -73,7 +73,7 @@
     </servlet>
     <servlet>
         <servlet-name>Controller_Post_Blog</servlet-name>
-        <servlet-class>controller.Controller_Post_Blog</servlet-class>
+        <servlet-class>controller.Blog.Controller_Post_Blog</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Detail_House</servlet-name>
@@ -93,59 +93,59 @@
     </servlet>
     <servlet>
         <servlet-name>Controller_Message</servlet-name>
-        <servlet-class>controller.Controller_Message</servlet-class>
+        <servlet-class>controller.Message.Controller_Message</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Delete_Message</servlet-name>
-        <servlet-class>controller.Controller_Delete_Message</servlet-class>
+        <servlet-class>controller.Message.Controller_Delete_Message</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Detail_Blog</servlet-name>
-        <servlet-class>controller.Controller_Detail_Blog</servlet-class>
+        <servlet-class>controller.Blog.Controller_Detail_Blog</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Edit_Blog</servlet-name>
-        <servlet-class>controller.Controller_Edit_Blog</servlet-class>
+        <servlet-class>controller.Blog.Controller_Edit_Blog</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Delete_Blog</servlet-name>
-        <servlet-class>controller.Controller_Delete_Blog</servlet-class>
+        <servlet-class>controller.Blog.Controller_Delete_Blog</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Comment_Blog</servlet-name>
-        <servlet-class>controller.Controller_Comment_Blog</servlet-class>
+        <servlet-class>controller.Blog.Controller_Comment_Blog</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Delete_Comment_Blog</servlet-name>
-        <servlet-class>controller.Controller_Delete_Comment_Blog</servlet-class>
+        <servlet-class>controller.Blog.Controller_Delete_Comment_Blog</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Edit_Comment_Blog</servlet-name>
-        <servlet-class>controller.Controller_Edit_Comment_Blog</servlet-class>
+        <servlet-class>controller.Blog.Controller_Edit_Comment_Blog</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Manage_Blog</servlet-name>
-        <servlet-class>controller.Controller_Manage_Blog</servlet-class>
+        <servlet-class>controller.Blog.Controller_Manage_Blog</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Favourite_Blog</servlet-name>
-        <servlet-class>controller.Controller_Favourite_Blog</servlet-class>
+        <servlet-class>controller.Blog.Controller_Favourite_Blog</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_List_Favourite_Blog</servlet-name>
-        <servlet-class>controller.Controller_List_Favourite_Blog</servlet-class>
+        <servlet-class>controller.Blog.Controller_List_Favourite_Blog</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Add_Feedback</servlet-name>
-        <servlet-class>controller.Controller_Add_Feedback</servlet-class>
+        <servlet-class>controller.Feedback.Controller_Add_Feedback</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Delete_Feedback</servlet-name>
-        <servlet-class>controller.Controller_Delete_Feedback</servlet-class>
+        <servlet-class>controller.Feedback.Controller_Delete_Feedback</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Update_Feedback</servlet-name>
-        <servlet-class>controller.Controller_Update_Feedback</servlet-class>
+        <servlet-class>controller.Feedback.Controller_Update_Feedback</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Delete_House</servlet-name>
