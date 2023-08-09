@@ -3,39 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Login.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Change_Password.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_List_Blog.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_List_Favourite_Blog.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Delete_Blog.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Edit_Blog.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Forgot_Password.java</file>
             <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Manager.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Change_Information.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Change_PhoneNumber.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Delete_Comment_Blog.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Edit_House.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Post_Blog.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Register.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/Dao/DAOAccount.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_FeedbackSystem.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Post_House.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Detail_House.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Delete_Message.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Update_Feedback.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Change_StatusHistory.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Favourite_Blog.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Home.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Edit_Comment_Blog.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Comment_Blog.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Detail_Blog.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_EditFeedbackSystem.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Manage_Blog.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Change_Status.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Add_Feedback.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Message.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_DeleteFeedbackSystem.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_Delete_Feedback.java</file>
         </group>
     </open-files>
 </project-private>
