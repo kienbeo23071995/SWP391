@@ -15,12 +15,17 @@
         <jsp:include page="header.jsp"></jsp:include>
             <section class="section section-access">
                 <div class="section-header">
+                <c:if test="${requestScope.warning != null}">
+                    <h1 class="section-title big">${requestScope.warning}</h1>
+                </c:if>
+                <c:if test="${requestScope.warning == null}">
                     <h1 class="section-title big">Tạo tài khoản mới</h1>
-                </div>
-                <div class="section-content">
-                    <form class="form-access register-form js-register-form clearfix" id="frm" action="register" method="POST">
-                        <div class="form-group form-group-fullname"><label for="email">Email</label>
-                            <input type="text" class="form-control" min-length="3"  name="email" value="${email}"/>
+                </c:if>
+            </div>
+            <div class="section-content">
+                <form class="form-access register-form js-register-form clearfix" id="frm" action="register" method="POST">
+                    <div class="form-group form-group-fullname"><label for="email">Email</label>
+                        <input type="text" class="form-control" min-length="3"  name="email" value="${email}" ${sessionScope.disabled eq true ?'readonly' : ''}/>
                         <p style="color: red">${alertE}</p>
                     </div>
                     <div class="form-group form-group-phone"><label for="phone">Số điện thoại</label>
@@ -67,7 +72,7 @@
                         </div>
                     </div>
                     <div class="form-group form-group-password"><label for="">Câu hỏi bảo mật</label>
-                        <select onchange="change()" style="border-radius: 10px" name="question">
+                        <select id="question" onchange="change()" style="border-radius: 10px" name="question">
                             <c:forEach items="${lsQ}" var="q">
                                 <c:if test="${idQ!=null}">
                                     <option value="${q.getId()}" ${q.getId() == idQ ? "selected" : ""}>${q.getQuestion()}</option>
@@ -79,10 +84,8 @@
                         </select>
                     </div>
                     <div class="form-group form-group-password"><label for="">Câu trả lời bảo mật</label>
-                        <select required="" style="width: 150px ; border-radius: 10px; padding-left: 10px " name="answer">
-                            <c:forEach items="${lsA}" var="a">
-                                <option value="${a.getId()}">${a.getAnswer()}</option>
-                            </c:forEach>
+                        <select id="answer" required="" style="width: 150px ; border-radius: 10px; padding-left: 10px " name="answer">
+
                         </select>
                     </div>
                     <div class="form-group form-group-password">
@@ -116,10 +119,19 @@
             </div>
         </section>
         <jsp:include page="footer.jsp"></jsp:include>
-        <script>
-            function change() {
-                var a = document.getElementById('frm').submit();
-            }
+            <script>
+                function change() {
+                    $.ajax({
+                        type: 'POST',
+                        url: "${pageContext.request.contextPath}/takeListAnswerSync",
+                        data: {
+                            id: $('#question').val()
+                        },
+                        success: function (data, textStatus, jqXHR) {
+                            $('#answer').html(data)
+                        }
+                    })
+                }
         </script>
     </body>
 </html>

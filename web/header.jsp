@@ -31,9 +31,9 @@
             <a href="homeController"><img id="top-logo" src="assets/images/logo/logo3.png"></a>    
             <div class="user-welcome clearfix js-reload-html-header">
                 <c:if test="${sessionScope.acc == null}">
-                    <a rel="nofollow" class="btn" href="login"><i class="fas fa-heart"></i> Yêu thích </a>
-                    <a rel="nofollow" class="btn" href="login"><i class="fab fa-facebook-messenger"></i> Nhắn tin</a>
-                    <a rel="nofollow" class="btn" href="login"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
+                    <a rel="nofollow" class="btn" href="${pageContext.request.contextPath}/login"><i class="fas fa-heart"></i> Yêu thích </a>
+                    <a rel="nofollow" class="btn" href="${pageContext.request.contextPath}/login"><i class="fab fa-facebook-messenger"></i> Nhắn tin</a>
+                    <a rel="nofollow" class="btn" href="${pageContext.request.contextPath}/login"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
                     <a rel="nofollow" class="btn" href="register"><i class="fas fa-user"></i> Đăng ký</a>
                     <a rel="nofollow" class="btn btn-add-post" href="login">Đăng tin mới <i class="fas fa-plus"></i></a>
                     </c:if>
