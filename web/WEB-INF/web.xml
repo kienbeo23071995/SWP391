@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <welcome-file-list>
-        <welcome-file>home</welcome-file>
+        <welcome-file>homeController</welcome-file>
     </welcome-file-list>
     <servlet>
         <servlet-name>Controller_Login</servlet-name>
-        <servlet-class>controller.Controller_Login</servlet-class>
+        <servlet-class>controller.Authentication.Controller_Login</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Logout</servlet-name>
@@ -154,6 +154,14 @@
     <servlet>
         <servlet-name>Controller_Edit_House</servlet-name>
         <servlet-class>controller.Controller_Edit_House</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_LoginGoogle</servlet-name>
+        <servlet-class>controller.Authentication.Controller_LoginGoogle</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Controller_TakeListAnswerAsync</servlet-name>
+        <servlet-class>controller.Controller_TakeListAnswerAsync</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller_Login</servlet-name>
@@ -313,6 +321,14 @@
     <servlet-mapping>
         <servlet-name>Controller_Edit_House</servlet-name>
         <url-pattern>/editHouse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_LoginGoogle</servlet-name>
+        <url-pattern>/loginGoogle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Controller_TakeListAnswerAsync</servlet-name>
+        <url-pattern>/takeListAnswerSync</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

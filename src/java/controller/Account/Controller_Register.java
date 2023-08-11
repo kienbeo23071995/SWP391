@@ -63,6 +63,7 @@ public class Controller_Register extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.getSession().setAttribute("disabled", false);
         DAOAccount dQ = new DAOAccount();
         List<Secure_Questions> lsQ = dQ.getListQuestion();
         List<Account_Role> lsR = dQ.getListRole();
@@ -82,6 +83,7 @@ public class Controller_Register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.getSession().setAttribute("disabled", false);
         String submit = request.getParameter("signup");
         DAOAccount dQ = new DAOAccount();
         List<Secure_Questions> lsQ = dQ.getListQuestion();

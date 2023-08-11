@@ -31,7 +31,7 @@
 
                             inputEmail.addEventListener('blur', function () {
                                 var email = inputEmail.value;
-                                 var emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+                                var emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 
                                 if (!emailRegex.test(email)) {
                                     errorSpan.textContent = 'Email không hợp lệ.';
@@ -65,6 +65,12 @@
                         <div class="form-group">
                             <p style="color: red">${requestScope.mess}</p>
                         <button type="submit" name="signin" id="signin" class="btn btn-submit">Đăng nhập</button></div>
+                    <div class="form-group">
+                        <a class="btn btn-outline-dark" href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/SWP391_HouseRental/loginGoogle&response_type=code
+                           &client_id=188672854294-9n1ftbqtng34nq5hq6g5t0usaptr3m6g.apps.googleusercontent.com&approval_prompt=force" role="button" style="text-transform:none;color: white">
+                            Login with Google
+                        </a>
+                    </div>
                     <div class="form-group clearfix">
                         <a href="forgotpassword">Bạn quên mật khẩu?</a>
                         <a style="float: right;" href="register">Tạo tài khoản mới</a></div>
