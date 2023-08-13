@@ -47,7 +47,9 @@ public class Controller_History_House extends HttpServlet {
             List<House> pageList = Pagination.Paging(pageNumber, 10, history);
             request.setAttribute("list", pageList);
             request.setAttribute("pageNum", pageNumber);
-            request.setAttribute("total", history.size() % 10 == 0 ? history.size() / 10 : (history.size() / 10 + 1));
+            if (history != null) {
+                request.setAttribute("total", history.size() % 10 == 0 ? history.size() / 10 : (history.size() / 10 + 1));
+            }
             request.getRequestDispatcher("historyhouse.jsp").forward(request, response);
         }
     }

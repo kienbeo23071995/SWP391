@@ -3,12 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Account/Controller_Register.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/web/login.jsp</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/web/detailhouse.jsp</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/House/Controller_Edit_House.java</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/Dao/DAOHouse.java</file>
             <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/Ulti/Constants.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/web/register.jsp</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Controller_TakeListAnswerAsync.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Authentication/Controller_LoginGoogle.java</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/web/posthouse.jsp</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Blog/Controller_Edit_Blog.java</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/Model/House_Details.java</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/web/edithouse.jsp</file>
         </group>
     </open-files>
 </project-private>

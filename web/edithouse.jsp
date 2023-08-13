@@ -61,16 +61,16 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <input type="hidden" name="id" value="${requestScope.house.getId()}">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <h3>Địa chỉ cho thuê</h3>
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h3>Địa chỉ cho thuê</h3>
                                         </div>
-                                        <div class="form-group row mt-3">
-                                            <label for="post_cat" class="col-md-12 col-form-label">Quận/Huyện</label>
-                                            <div class="col-md-3">
-                                                <select class="form-control" id="post_cat" name="district">
-                                                    <option value="Tất cả">-- Chọn quận/huyện --</option>
+                                    </div>
+                                    <div class="form-group row mt-3">
+                                        <label for="post_cat" class="col-md-12 col-form-label">Quận/Huyện</label>
+                                        <div class="col-md-3">
+                                            <select class="form-control" id="post_cat" name="district">
+                                                <option value="Tất cả">-- Chọn quận/huyện --</option>
                                                 <c:forEach items="${lsD}" var="d">
                                                     <option value="${d.getId()}" ${d.getId() == requestScope.house.getDistrict_ID() ? 'selected' : ''}>${d.getDistrict()}</option>
                                                 </c:forEach>
@@ -118,7 +118,7 @@
                                                       rows="10" required="" minlength="100"
                                                       data-msg-required="Bạn chưa nhập nội dung"
                                                       data-msg-minlength="Nội dung tối thiểu 100 kí tự">
-                                                          ${requestScope.house.getDescription()}
+                                                ${requestScope.house.getDescription()}
                                             </textarea>
                                         </div>
                                     </div>
@@ -175,6 +175,19 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="post_acreage" class="col-md-12 col-form-label">Bể bơi</label>
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-3">
+                                                <input id="post_acreage" type="text" pattern="[0-9.]+" name="pool"
+                                                       value="${requestScope.houseDetail.getPool()}" class="form-control" required=""
+                                                       data-msg-required="Bạn chưa nhập diện tích">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">m<sup>2</sup></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label for="direction" class="col-md-12 col-form-label">Hướng</label>
                                         <div class="col-md-6">
                                             <div class="input-group mb-3">
@@ -205,7 +218,7 @@
                                                 <input id="post_acreage" type="number" pattern="[0-9.]+" name="bathroom"
                                                        max="1000" class="form-control" required=""
                                                        data-msg-required="Bạn chưa nhập diện tích"
-                                                       value="${requestScope.houseDetail.getNumber_Of_Bathrooms()}">
+                                                       value="${requestScope.houseDetail.getNumber_Of_Bathrooms()}" >
                                             </div>
                                         </div>
                                     </div>
@@ -286,7 +299,7 @@
                         let reader = new FileReader();
                         reader.onload = function (event) {
                             $("#imgPreview")
-                              .attr("src", event.target.result);
+                                    .attr("src", event.target.result);
                         };
                         reader.readAsDataURL(file);
                     }

@@ -4,7 +4,6 @@
  */
 package controller.House;
 
-import controller.*;
 import Dao.DAODistrict;
 import Dao.DAOHouse;
 import Model.Districts;
@@ -117,7 +116,7 @@ public class Controller_Edit_House extends HttpServlet {
         detail.setNumber_Of_Bedrooms(Integer.parseInt(bedroom));
         detail.setNumber_Of_Bathrooms(Integer.parseInt(bathroom));
         int length = getServletContext().getRealPath("/").length();
-        String uploadPath = new StringBuilder(getServletContext().getRealPath("/")).delete(length - 10, length - 4).toString() + File.separator + "assests" + File.separator + "images";
+        String uploadPath = new StringBuilder(getServletContext().getRealPath("/")).delete(length - 10, length - 4).toString() + File.separator + "assets" + File.separator + "images";
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
             uploadDir.mkdir();

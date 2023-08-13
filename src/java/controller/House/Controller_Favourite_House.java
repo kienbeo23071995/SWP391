@@ -47,7 +47,9 @@ public class Controller_Favourite_House extends HttpServlet {
             List<House> pageList = Pagination.Paging(pageNumber, 10, favourites);
             request.setAttribute("list", pageList);
             request.setAttribute("pageNum", pageNumber);
-            request.setAttribute("total", favourites.size() % 10 == 0 ? favourites.size() / 10 : (favourites.size() / 10 + 1));
+            if (favourites != null) {
+                request.setAttribute("total", favourites.size() % 10 == 0 ? favourites.size() / 10 : (favourites.size() / 10 + 1));
+            }
             request.getRequestDispatcher("favourite.jsp").forward(request, response);
         }
     }

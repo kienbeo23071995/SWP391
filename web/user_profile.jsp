@@ -51,7 +51,7 @@
                                 <h1 class="h2">Cập nhật thông tin cá nhân</h1>
                             </div>
 
-                            <form class="js-form-submit-data" action="changeinformation" method="POST">
+                            <form class="js-form-submit-data" action="changeinformation" method="POST" enctype="multipart/form-data">
                                 <div class="form-group row mt-5">
                                     <label for="user_name" class="col-md-2 offset-md-2 col-form-label">Tên hiển thị</label>
                                     <div class="col-md-6">

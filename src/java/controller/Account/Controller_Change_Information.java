@@ -9,17 +9,25 @@ import Model.Account;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
+import java.io.File;
 import java.util.regex.Pattern;
 
 /**
  *
  * @author kienb
  */
+@MultipartConfig(fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 1024 * 1024 * 5,
+        maxRequestSize = 1024 * 1024 * 5 * 5)
 public class Controller_Change_Information extends HttpServlet {
+
+    private static final String DEFAULT_FILENAME = "default.file";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -88,11 +96,26 @@ public class Controller_Change_Information extends HttpServlet {
         address = request.getParameter("address");
         phone = request.getParameter("phone");
         gender = request.getParameter("gender").equals("1");
-        picture = request.getParameter("picture");
+        picture = a.getProfile_Picture();
         email = a.getEmail();
         password = a.getPassword();
-        Pattern f = Pattern.compile("^[a-zA-Z\\s]+$");
-        
+        Pattern f = Pattern.compile("[a-zA-Z\\s]+");
+        int length = getServletContext().getRealPath("/").length();
+        String uploadPath = new StringBuilder(getServletContext().getRealPath("/")).delete(length - 10,length - 4).toString() + "assets" + File.separator + "images";
+        File uploadDir = new File(uploadPath);
+        if (!uploadDir.exists()) {
+            uploadDir.mkdir();
+        }
+        for (Part part : request.getParts()) {
+            picture = getFileName(part);
+            if (!picture.equals(DEFAULT_FILENAME) && !picture.trim().isEmpty()) {
+                part.write(uploadPath + File.separator + picture);
+                break;
+            }
+        }
+        if (picture.equals(DEFAULT_FILENAME) || picture.trim().isEmpty()) {
+            picture = a.getProfile_Picture();
+        }
         DAOAccount change = new DAOAccount();
         DAOAccount account = new DAOAccount();
         if (f.matcher(fullName).find()) {
@@ -123,4 +146,13 @@ public class Controller_Change_Information extends HttpServlet {
         return "Short description";
     }// </editor-fold>
     // test 
+
+    private String getFileName(Part part) {
+        for (String content : part.getHeader("content-disposition").split(";")) {
+            if (content.trim().startsWith("filename")) {
+                return content.substring(content.indexOf("=") + 2, content.length() - 1);
+            }
+        }
+        return DEFAULT_FILENAME;
+    }
 }

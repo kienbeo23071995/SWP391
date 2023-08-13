@@ -23,7 +23,7 @@
                 </c:if>
             </div>
             <div class="section-content">
-                <form class="form-access register-form js-register-form clearfix" id="frm" action="register" method="POST">
+                <form class="form-access register-form js-register-form clearfix" id="frm" action="register" method="POST" enctype="multipart/form-data">
                     <div class="form-group form-group-fullname"><label for="email">Email</label>
                         <input type="text" class="form-control" min-length="3"  name="email" value="${email}" ${sessionScope.disabled eq true ?'readonly' : ''}/>
                         <p style="color: red">${alertE}</p>

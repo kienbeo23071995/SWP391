@@ -50,11 +50,14 @@
                                         <strong>${sessionScope.acc.id}</strong></span>
                                 </div>
                             </a>
-                            <a rel="nofollow" class="btn" href="favourites"><i class="fas fa-heart"></i> Yêu thích <span
-                                    class="number-count js-save-post-total">${sessionScope.acc.favourites.size()}</span></a>
-
-<!--                            <a rel="nofollow" class="btn" href="historyhouse"><i class="fas fa-history"></i> Lịch sử <span
-                                    class="number-count js-save-post-total">${sessionScope.acc.history.size()}</span></a>       -->
+                            <a rel="nofollow" class="btn" href="favourites"><i class="fas fa-heart"></i> Yêu thích 
+                                <c:if test="${sessionScope.acc.favourites != null && sessionScope.acc.favourites.size() > 0}">
+                                    <span
+                                        class="number-count js-save-post-total">${sessionScope.acc.favourites.size()}</span>
+                                </c:if>
+                            </a>
+                            <!--                            <a rel="nofollow" class="btn" href="historyhouse"><i class="fas fa-history"></i> Lịch sử <span
+                                                                class="number-count js-save-post-total">${sessionScope.acc.history.size()}</span></a>       -->
 
                             <a rel="nofollow" class="btn" href="message"><i class="fab fa-facebook-messenger"></i> Nhắn tin</a>
 
@@ -93,8 +96,8 @@
                             <a rel="nofollow" class="btn" href="favourites"><i class="fas fa-heart"></i> Yêu thích <span
                                     class="number-count js-save-post-total">${sessionScope.acc.favourites.size()}</span></a>
 
-<!--                            <a rel="nofollow" class="btn" href="historyhouse"><i class="fas fa-history"></i> Lịch sử <span
-                                    class="number-count js-save-post-total">${sessionScope.acc.history.size()}</span></a> -->
+                            <!--                            <a rel="nofollow" class="btn" href="historyhouse"><i class="fas fa-history"></i> Lịch sử <span
+                                                                class="number-count js-save-post-total">${sessionScope.acc.history.size()}</span></a> -->
                             <a rel="nofollow" class="btn" href="message"><i class="fab fa-facebook-messenger"></i> Nhắn tin</a>
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

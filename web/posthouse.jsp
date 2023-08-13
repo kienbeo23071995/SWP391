@@ -57,7 +57,7 @@
                             </div>
                             <form id="form_dangtin" class="form-horizontal js-form-submit-data js-frm-manage-post"
                                   action="posthouse" method="post"
-                                  data-action-url="https://phongtro123.com/api/post/create" novalidate="novalidate">
+                                  enctype="multipart/form-data" novalidate="novalidate">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="row">
@@ -171,6 +171,16 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="post_acreage" class="col-md-12 col-form-label">Bể bơi</label>
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-3">
+                                                <input id="post_acreage" type="number" pattern="[0-9.]+" name="pool"
+                                                       class="form-control" required=""
+                                                       data-msg-required="Bạn chưa nhập diện tích">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label for="direction" class="col-md-12 col-form-label">Hướng</label>
                                         <div class="col-md-6">
                                             <div class="input-group mb-3">
@@ -211,7 +221,7 @@
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <div class="photo_item col-md-2 col-3 js-photo-manual">
-                                                <input name="image" value="" type="file">
+                                                <input name="image" value="" type="file" required="">
                                             </div>
                                         </div>
                                     </div>

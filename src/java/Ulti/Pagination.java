@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class Pagination {
     public static List<House> Paging(int pageNum,int size,List<House> list){
-        if(list.isEmpty()){
+        if(list == null || list.isEmpty()){
             return new ArrayList<>();
         }
         return list.subList(size * (pageNum - 1), size * pageNum < list.size() ? size * pageNum : (list.size()));
