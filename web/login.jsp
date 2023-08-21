@@ -1,8 +1,3 @@
-<%-- 
-    Document   : user_profile
-    Created on : Aug 9, 2023, 10:20:15 AM
-    Author     : kienb
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -66,8 +61,8 @@
                             <p style="color: red">${requestScope.mess}</p>
                         <button type="submit" name="signin" id="signin" class="btn btn-submit">Đăng nhập</button></div>
                     <div class="form-group">
-                        <a class="btn btn-outline-dark" href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:9999/loginEmail&response_type=code&client_id=583964261490-qa8kt76ed9evd3l597jn9hmsnrm6s97q.apps.googleusercontent.com&approval_prompt=force"
-                           role="button" style="text-transform:none;color: white">
+                        <a class="btn btn-outline-dark" href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8081/SWP391/loginGoogle&response_type=code
+                           &client_id=188672854294-9n1ftbqtng34nq5hq6g5t0usaptr3m6g.apps.googleusercontent.com&approval_prompt=force" role="button" style="text-transform:none;color: white">
                             Login with Google
                         </a>
                     </div>
