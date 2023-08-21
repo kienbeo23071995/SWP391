@@ -114,10 +114,10 @@ public class DAOAccount extends DBContext {
     }
     
     public Account getAccountByEmail(String email) {
+        String sql = "SELECT * FROM Account WHERE Email = ?";
         try {
-            String stmSql = "select * from Account where Email = ?";
             Connection conn = new DBContext().getConnection();
-            PreparedStatement ps = conn.prepareStatement(stmSql);
+            PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -133,10 +133,37 @@ public class DAOAccount extends DBContext {
                         rs.getInt(10),
                         rs.getInt(11),
                         rs.getString(12));
+                
+                List<House> list = new ArrayList<>();
+                DAOHouse dh = new DAOHouse();
+
+                String xSQL = "Select * from Favourite_House where [User_ID] = ?";
+                PreparedStatement ptm = conn.prepareStatement(xSQL);
+                ptm.setInt(1, rs.getInt(1));
+                ResultSet resultSet = ptm.executeQuery();
+                
+                while (resultSet.next()) {
+                    list.add(dh.getHouseById(resultSet.getInt(3)));
+
+                }
+                a.setFavourites(list);
+                
+                List<House> listt = new ArrayList<>();
+                DAOHouse dhh = new DAOHouse();
+
+                String xSQLx = "Select * from History_House where Account_ID = ?";
+                PreparedStatement ptmm = conn.prepareStatement(xSQLx);
+                ptmm.setInt(1, rs.getInt(1));
+                ResultSet resultSett = ptmm.executeQuery();
+                while (resultSett.next()) {
+                    listt.add(dhh.getHouseById(resultSett.getInt(3)));
+                }
+                a.setHistory(listt);
+                
                 return a;
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, e);
         }
         return null;
     }

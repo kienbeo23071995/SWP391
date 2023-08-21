@@ -473,12 +473,12 @@
                             </div>
                             <c:if test="${(sessionScope.acc!=null)&&sessionScope.acc.getId() != finforowner.getId()}">
                                 <div class="fillinfor" id="butmess" onclick="disMess()">
-                                    <h6 style="color: black;display: inline-flex"><ion-icon name="chatbox-outline"></ion-icon>Nhắn tin</h6>
+                                    <h6 style="color: black;display: inline-flex"><ion-icon name="chatbox-outline"></ion-icon>Thuê</h6>
                                 </div>
                             </c:if>
                             <c:if test="${(sessionScope.acc==null)||(sessionScope.acc.getId() == finforowner.getId())}">
                                 <div class="fillinfor" id="butmess">
-                                    <h6 style="color: black;display: inline-flex"><ion-icon name="chatbox-outline"></ion-icon>Nhắn tin</h6>
+                                    <h6 style="color: black;display: inline-flex"><ion-icon name="chatbox-outline"></ion-icon>Thuê</h6>
                                 </div>
                             </c:if>
                             <div class="fillinfor" id="butfa">

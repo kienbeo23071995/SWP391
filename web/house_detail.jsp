@@ -262,9 +262,9 @@
                                         động</span></div>
                             </div>
                             <a class="btn author-phone" rel="nofollow" href="tel:${finforowner.getPhoneNumber()}"><i class="fas fa-phone-alt"></i> ${finforowner.getPhoneNumber()}</a>
-                            <a class="btn author-zalo" target="_blank" rel="nofollow" href="https://zalo.me/0909913596"><i class="fab fa-facebook-messenger"></i> Nhắn tin</a>
+                            <button type="button" class="btn author-zalo" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"><i class="fab fa-facebook-messenger"></i> Thuê</button>
                             <c:if test="${sessionScope.acc != null}">
-                                <span onclick="window.location.href='${pageContext.request.contextPath}/changeStatus?id=${requestScope.fhouse.getId()}&uid=${sessionScope.acc.getId()}'" class="btn post-save js-btn-save saved"><i class="fas fa-heart"></i>Yêu thích</span>
+                                <span onclick="window.location.href = '${pageContext.request.contextPath}/changeStatus?id=${requestScope.fhouse.getId()}&uid=${sessionScope.acc.getId()}'" class="btn post-save js-btn-save saved"><i class="fas fa-heart"></i>Yêu thích</span>
                             </c:if>
                         </div>
                         <section class="section section-aside-tinmoidang">
@@ -302,9 +302,39 @@
                                         Viên</a></li>
                             </ul>
                         </section>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Tạo hóa đơn</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="createBill" method="post">
+                                            <input type="hidden" name="houseID" value="${requestScope.houseId}">
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Ngày bắt đầu</label>
+                                                <input type="date" class="form-control" name="startDate" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="col-form-label">Ngày kết thúc</label>
+                                                <input type="date" class="form-control" name="endDate" required="">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Tạo</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </aside>
                 </div>
             </main>
+
 
         </div>
         <script type="text/javascript">
