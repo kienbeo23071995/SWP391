@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
  *
- * @author kienb
+ * @author dell
  */
 public class Controller_Post_House extends HttpServlet {
    
@@ -61,13 +61,18 @@ public class Controller_Post_House extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        
         DAOHouse h = new DAOHouse();
+        //get all information need to create house
         List<Districts> lsD = h.getListDistricts();
         List<House_Category> lsC = h.getListCategory();
         List<House_Directions> lsDR = h.getListDirections();
+        
+        //send data to client
         request.setAttribute("lsD", lsD);
         request.setAttribute("lsC", lsC);
         request.setAttribute("lsDR", lsDR);
+        
         request.getRequestDispatcher("posthouse.jsp").forward(request, response);
     } 
 
@@ -78,11 +83,14 @@ public class Controller_Post_House extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
+        
+        //get current account login
         HttpSession session = request.getSession();
         Account a = (Account)session.getAttribute("acc");
+        
         int district = Integer.parseInt(request.getParameter("district"));
         String address = request.getParameter("address");
         int category = Integer.parseInt(request.getParameter("category"));
@@ -93,25 +101,31 @@ public class Controller_Post_House extends HttpServlet {
         int nBedroom = Integer.parseInt(request.getParameter("bedroom"));
         int nBathroom = Integer.parseInt(request.getParameter("bathroom"));
         int area = Integer.parseInt(request.getParameter("area"));
-        int nPool = Integer.parseInt(request.getParameter("pool"));
         int houseDirectionId = Integer.parseInt(request.getParameter("direction"));
         String[] images = request.getParameterValues("image");
+        
+        //insert house to database
         DAOHouse h = new DAOHouse();
         h.insertHouse(houseOwnerId, category, price, district, address, description, title);
+        
+        //insert house detail to database
         int houseId = h.getHouseId();
-        h.insertHouseDetail(houseId,nBedroom,nBathroom,area,nPool,houseDirectionId);
+        h.insertHouseDetail(houseId,nBedroom,nBathroom,area,0,houseDirectionId);
+        
+        //insert image to databse
         for (String img : images) {
             h.insertImages(houseId, img);
         }
+        response.sendRedirect("homeController");
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    } // </editor-fold>
 
 }

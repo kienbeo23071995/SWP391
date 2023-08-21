@@ -9,7 +9,7 @@
     </servlet>
     <servlet>
         <servlet-name>Controller_Logout</servlet-name>
-        <servlet-class>controller.Controller_Logout</servlet-class>
+        <servlet-class>controller.Authentication.Controller_Logout</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Register</servlet-name>
@@ -25,7 +25,7 @@
     </servlet>
     <servlet>
         <servlet-name>Controller_Forgot_Password</servlet-name>
-        <servlet-class>controller.Controller_Forgot_Password</servlet-class>
+        <servlet-class>controller.Account.Controller_Forgot_Password</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Home</servlet-name>
@@ -57,7 +57,7 @@
     </servlet>
     <servlet>
         <servlet-name>Controller_MailChangePhoneNumber</servlet-name>
-        <servlet-class>controller.Controller_MailChangePhoneNumber</servlet-class>
+        <servlet-class>controller.Authentication.Controller_MailChangePhoneNumber</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_List_Blog</servlet-name>
@@ -69,7 +69,7 @@
     </servlet>
     <servlet>
         <servlet-name>Controller_Favourite_House</servlet-name>
-        <servlet-class>controller.Controller_Favourite_House</servlet-class>
+        <servlet-class>controller.House.Controller_Favourite_House</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Post_Blog</servlet-name>
@@ -77,11 +77,11 @@
     </servlet>
     <servlet>
         <servlet-name>Controller_Detail_House</servlet-name>
-        <servlet-class>controller.Controller_Detail_House</servlet-class>
+        <servlet-class>controller.House.Controller_Detail_House</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_History_House</servlet-name>
-        <servlet-class>controller.Controller_History_House</servlet-class>
+        <servlet-class>controller.House.Controller_History_House</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Change_StatusHistory</servlet-name>
@@ -89,7 +89,7 @@
     </servlet>
     <servlet>
         <servlet-name>Controller_Post_House</servlet-name>
-        <servlet-class>controller.Controller_Post_House</servlet-class>
+        <servlet-class>controller.House.Controller_Post_House</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Message</servlet-name>
@@ -148,20 +148,20 @@
         <servlet-class>controller.Feedback.Controller_Update_Feedback</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Controller_Delete_House</servlet-name>
-        <servlet-class>controller.Controller_Delete_House</servlet-class>
+        <servlet-name>Controller_TakeListAnswerAsync</servlet-name>
+        <servlet-class>controller.Controller_TakeListAnswerAsync</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_Edit_House</servlet-name>
-        <servlet-class>controller.Controller_Edit_House</servlet-class>
+        <servlet-class>controller.House.Controller_Edit_House</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Controller_LoginGoogle</servlet-name>
         <servlet-class>controller.Authentication.Controller_LoginGoogle</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Controller_TakeListAnswerAsync</servlet-name>
-        <servlet-class>controller.Controller_TakeListAnswerAsync</servlet-class>
+        <servlet-name>Controller_Delete_House</servlet-name>
+        <servlet-class>controller.House.Controller_Delete_House</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller_Login</servlet-name>
@@ -315,8 +315,8 @@
         <url-pattern>/updateFeedBack</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Controller_Delete_House</servlet-name>
-        <url-pattern>/deleteHouse</url-pattern>
+        <servlet-name>Controller_TakeListAnswerAsync</servlet-name>
+        <url-pattern>/takeListAnswerSync</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Controller_Edit_House</servlet-name>
@@ -327,8 +327,8 @@
         <url-pattern>/loginGoogle</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Controller_TakeListAnswerAsync</servlet-name>
-        <url-pattern>/takeListAnswerSync</url-pattern>
+        <servlet-name>Controller_Delete_House</servlet-name>
+        <url-pattern>/deleteHouse</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

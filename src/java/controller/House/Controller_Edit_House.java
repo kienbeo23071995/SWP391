@@ -26,7 +26,7 @@ import java.util.List;
 
 /**
  *
- * @author kienb
+ * @author dell
  */
 @MultipartConfig(fileSizeThreshold = 1024 * 1024,
         maxFileSize = 1024 * 1024 * 5,
@@ -92,6 +92,7 @@ public class Controller_Edit_House extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //get all information client sent to sever
         String id = request.getParameter("id");
         DAOHouse dhAOHouse = new DAOHouse();
         House h = dhAOHouse.getHouseById(Integer.parseInt(id));
@@ -106,6 +107,8 @@ public class Controller_Edit_House extends HttpServlet {
         String direction = request.getParameter("direction");
         String bedroom = request.getParameter("bedroom");
         String bathroom = request.getParameter("bathroom");
+        
+        //set new information
         h.setCategory_ID(Integer.parseInt(category));
         h.setDistrict_ID(Integer.parseInt(district));
         h.setFull_Address(address);
@@ -116,12 +119,16 @@ public class Controller_Edit_House extends HttpServlet {
         detail.setHouse_Direction_ID(Integer.parseInt(direction));
         detail.setNumber_Of_Bedrooms(Integer.parseInt(bedroom));
         detail.setNumber_Of_Bathrooms(Integer.parseInt(bathroom));
+        
+        //insert new inmages
         int length = getServletContext().getRealPath("/").length();
         String uploadPath = new StringBuilder(getServletContext().getRealPath("/")).delete(length - 10, length - 4).toString() + File.separator + "assests" + File.separator + "images";
+        //check path exist or not
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
             uploadDir.mkdir();
         }
+        //update new data to database
         try {
             String fileName = "";
             for (Part part : request.getParts()) {
@@ -136,7 +143,7 @@ public class Controller_Edit_House extends HttpServlet {
             }
             dhAOHouse.update(h);
             dhAOHouse.updateDetail(detail);
-            dhAOHouse.updateImage(fileName,Integer.parseInt(id),h.getImg());
+            dhAOHouse.updateImage(fileName, Integer.parseInt(id), h.getImg());
             response.sendRedirect("editHouse?id=" + id);
         } catch (FileNotFoundException fne) {
             request.setAttribute("message", "There was an error: " + fne.getMessage());

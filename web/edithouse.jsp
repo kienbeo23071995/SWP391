@@ -56,7 +56,7 @@
                                 <h1 class="h1">Sửa tin đăng </h1>
                             </div>
                             <form id="form_dangtin" class="form-horizontal js-form-submit-data js-frm-manage-post"
-                                  action="posthouse" method="post"
+                                  action="editHouse" method="post"
                                   enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-8">
@@ -106,7 +106,7 @@
                                         <label for="post_title" class="col-md-12 col-form-label">Tiêu đề</label>
                                         <div class="col-md-12">
                                             <input type="text" class="form-control js-title" name="title" id="post_title"
-                                                   value="${requestScope.house.getTitle()}" minlength="30" maxlength="120" required=""
+                                                   value="${requestScope.house.getTitle()}" required=""
                                                    data-msg-required="Tiêu đề không được để trống"
                                                    data-msg-minlength="Tiêu đề quá ngắn" data-msg-maxlength="Tiêu đề quá dài">
                                         </div>

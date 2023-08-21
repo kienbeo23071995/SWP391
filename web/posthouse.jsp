@@ -130,16 +130,6 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="phone" class="col-md-12 col-form-label">Điện thoại</label>
-                                        <div class="col-md-6">
-                                            <div class="input-group mb-3">
-                                                <input id="phone" type="number" name="phone" class="form-control"
-                                                       readonly="readonly" required="" data-msg-required="Số điện thoại"
-                                                       value="${sessionScope.acc.getPhone_Number()}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
                                         <label for="giachothue" class="col-md-12 col-form-label">Giá cho thuê</label>
                                         <div class="col-md-6">
                                             <div class="input-group">
