@@ -34,19 +34,27 @@ public class Controller_Change_Status extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            //get data is send from client
             String url = request.getHeader("referer");
             String id = request.getParameter("id");
             String uid = request.getParameter("uid");
             DAOHouse dh = new DAOHouse();
+            
+            //get cuurent account login
             HttpSession session = request.getSession();
             Account acc = (Account) session.getAttribute("acc");
             DAOHouse dhouse = new DAOHouse();
             List<House> list = acc.getFavourites();
-            if(dh.checkFavourite(Integer.parseInt(id), Integer.parseInt(uid))){                
+            
+            //check house is favourite or not
+            if(dh.checkFavourite(Integer.parseInt(id), Integer.parseInt(uid))){
+                request.getSession().setAttribute("msg", "Cập nhật danh sách yêu thích thành công!");
                 list.remove(list.indexOf(new House(Integer.parseInt(id))));
             }
             else {
                 House house = dhouse.getHouseById(Integer.parseInt(id));
+                request.getSession().setAttribute("msg", "Thêm vào danh sách yêu thích thành công!");
                 list.add(house);
             }
             acc.setFavourites(list);

@@ -84,8 +84,8 @@
                             <div class="form-group row mt-5">
                                 <label for="gender" class="col-md-2 offset-md-2 col-form-label">Giới tính</label>
                                 <div class="col-md-6">
-                                    <label for="male" class="gender-label"><input type="radio" id="male" name="gender" value="1" ${gender==1?"checked":""}>Male</label>
-                                    <label for="female" class="gender-label"><input type="radio" id="female" name="gender" value="0" ${gender==0?"checked":""}>Female</label>
+                                    <label for="male" class="gender-label"><input type="radio" id="male" name="gender" value="1" ${gender==1?"checked":""}>Nam</label>
+                                    <label for="female" class="gender-label"><input type="radio" id="female" name="gender" value="0" ${gender==0?"checked":""}>Nữ</label>
                                 </div>
                             </div>
 

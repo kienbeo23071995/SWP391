@@ -36,18 +36,28 @@ public class Controller_Favourite_House extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
+            //get current page of user
             String pageNum = request.getParameter("pageNum");
             int pageNumber = 1;
             if (pageNum != null) {
                 pageNumber = Integer.parseInt(pageNum);
             }
             HttpSession session = request.getSession();
+            //get current account login
             Account acc = (Account) session.getAttribute("acc");
             List<House> favourites = acc.getFavourites();
+            //pagination list
             List<House> pageList = Pagination.Paging(pageNumber, 10, favourites);
             request.setAttribute("list", pageList);
             request.setAttribute("pageNum", pageNumber);
             request.setAttribute("total", favourites.size() % 10 == 0 ? favourites.size() / 10 : (favourites.size() / 10 + 1));
+
+            String msg = (String) request.getSession().getAttribute("msg");
+            if (msg != null) {
+                request.setAttribute("msg", msg);
+                request.getSession().setAttribute("msg", null);
+            }
+
             request.getRequestDispatcher("favourite.jsp").forward(request, response);
         }
     }

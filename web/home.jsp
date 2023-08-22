@@ -14,6 +14,7 @@
                 cursor: default;
             }
         </style>
+        <link href="assets/css/toast.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <jsp:include page="header.jsp"></jsp:include>
@@ -121,6 +122,20 @@
                                 <a href="homeController?orderBy=1" class="${request.orderBy == 1? '' : 'active'}">Mới nhất</a>
                             </c:if>
                         </div>
+
+                        <!-- toast -->
+                        <div id="snackbar"></div>
+                        <c:if test="${msg != null}">
+                            <script>
+                                var x = document.getElementById("snackbar");
+                                x.textContent = '${msg}';
+                                x.className = "show";
+                                setTimeout(function () {
+                                    x.className = x.className.replace("show", "");
+                                }, 3000);
+                            </script>
+                        </c:if>
+
                         <ul class="post-listing clearfix">
                             <c:forEach items="${requestScope.list}" var="i">
                                 <li class="post-item post-id-627736 style-4 clearfix tin-vip vipnoibat" style="border-color: #E13427;" post-id="627736">

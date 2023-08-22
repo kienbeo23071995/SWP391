@@ -97,6 +97,7 @@ public class Controller_Home extends HttpServlet {
         }
         List<House> listNew = dh.getAllNewHouse(null);
         List<House> pageList = Pagination.Paging(pageNumber, 10, list);
+        
         request.setAttribute("listdc", listDistrict);
         request.setAttribute("listCate", listCate);
         request.setAttribute("list", pageList);
@@ -124,6 +125,13 @@ public class Controller_Home extends HttpServlet {
         request.setAttribute("price", minPrice + "-" + maxPrice);
         request.setAttribute("total", list.size() % 10 == 0 ? list.size() / 10 : (list.size() / 10 + 1));
         request.setAttribute("orderBy", orderBy);
+        
+        String msg = (String) request.getSession().getAttribute("msg");
+        if (msg != null) {
+            request.setAttribute("msg", msg);
+            request.getSession().setAttribute("msg", null);
+        }
+        
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 

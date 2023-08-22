@@ -18,20 +18,21 @@
                 cursor: default;
             }
         </style>
+        <link href="assets/css/toast.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <jsp:include page="header.jsp"></jsp:include>
             <main id="main">
-            <header class="page-header welcome">
-                <h1 class="page-h1">Kênh thông tin phòng trọ Hà Nội</h1>
-            </header>
-            <section class="section section-top-location">
-            </section>
-            <div class="container clearfix">
-                <div id="left-col">
-                    <section class="section section-post-listing">
-                        <div class="section-header"><span class="section-title">BÀI VIẾT ĐÃ THÍCH</span></div>
-                        <ul class="post-listing clearfix">
+                <header class="page-header welcome">
+                    <h1 class="page-h1">Kênh thông tin phòng trọ Hà Nội</h1>
+                </header>
+                <section class="section section-top-location">
+                </section>
+                <div class="container clearfix">
+                    <div id="left-col">
+                        <section class="section section-post-listing">
+                            <div class="section-header"><span class="section-title">BÀI VIẾT ĐÃ THÍCH</span></div>
+                            <ul class="post-listing clearfix">
                             <c:forEach items="${requestScope.list}" var="i">
                                 <li class="post-item post-id-627736 style-4 clearfix tin-vip vipnoibat" style="border-color: #E13427;" post-id="627736">
                                     <figure class="post-thumb">
@@ -54,15 +55,13 @@
                                             <time class="post-time">${i.getAdded_Date()}</time>
                                         </div>
                                         <div class="meta-row clearfix"><p class="post-summary">${i.getDescription()}</p></div>
-                                        <div class="meta-row clearfix">
-                                            <div class="post-author">
-                                                <img src="./assets/images/${i.account.getProfile_Picture()}">
-                                                <span class="author-name">${i.account.getFullname()}</span>
-                                            </div>
-                                            <a rel="nofollow" target="_blank" href="" class="btn-quick-zalo">Nhắn Zalo</a>
-                                            <a rel="nofollow" target="_blank" href="tel:0965889995" class="btn-quick-call">${i.account.getPhone_Number()}</a>
+                                        <div style="display: flex;justify-content: center">
+                                            <form action="changeStatus" method="get">
+                                                <input type="hidden" value="${i.getId()}" name="id">
+                                                <input type="hidden" value="${sessionScope.acc.getId()}" name="uid">
+                                                <button class="btn" style="background-color: red;margin-top: 7%">Xóa khỏi danh sách yêu thích</button>   
+                                            </form>                                         
                                         </div>
-                                        <a href="changeStatus?id=${i.getId()}&uid=${sessionScope.acc.getId()}">Delete</a>
                                     </div>
                                 </li>
                             </c:forEach>                           
@@ -72,10 +71,24 @@
                         <c:if test="${sessionScope.searchSession == 0}">
                             <c:forEach begin="1" end="${requestScope.total}" var="i">
                                 <a class="page-item" href="favourites?pageNum=${i}&orderBy=${requestScope.orderBy}&districtId=${requestScope.districtId}&categoryID=${requestScope.categoryID}&minArea=${requestScope.minArea}&maxArea=${requestScope.maxArea}&minPrice=${requestScope.minPrice}&maxPrice=${requestScope.maxPrice}&txt=${txt}" style="color : ${requestScope.pageNum == i ? 'red' : ''}"><span class="page-link">${i}</span></a>
-                            </c:forEach>
-                        </c:if>
+                                </c:forEach>
+                            </c:if>
                     </ul>
                 </div>
+                    
+                <!-- toast -->
+                <div id="snackbar"></div>
+                <c:if test="${msg != null}">
+                    <script>
+                        var x = document.getElementById("snackbar");
+                        x.textContent = '${msg}';
+                        x.className = "show";
+                        setTimeout(function () {
+                            x.className = x.className.replace("show", "");
+                        }, 3000);
+                    </script>
+                </c:if>
+                    
                 <aside id="aside">
                     <section class="section section-sublink">
                         <div class="section-header"><span class="section-title">Xem theo giá</span></div>
