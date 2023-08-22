@@ -12,13 +12,17 @@ import Model.Messages;
 import Model.Messengers;
 import Model.Secure_Answers;
 import Model.Secure_Questions;
+import Ulti.Constants;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,7 +53,7 @@ public class DAOAccount extends DBContext {
                         rs.getInt(10),
                         rs.getInt(11),
                         rs.getString(12));
-                
+
                 List<House> list = new ArrayList<>();
                 DAOHouse dh = new DAOHouse();
 
@@ -57,13 +61,13 @@ public class DAOAccount extends DBContext {
                 PreparedStatement ptm = conn.prepareStatement(xSQL);
                 ptm.setInt(1, rs.getInt(1));
                 ResultSet resultSet = ptm.executeQuery();
-                
+
                 while (resultSet.next()) {
                     list.add(dh.getHouseById(resultSet.getInt(3)));
 
                 }
                 a.setFavourites(list);
-                
+
                 List<House> listt = new ArrayList<>();
                 DAOHouse dhh = new DAOHouse();
 
@@ -75,7 +79,7 @@ public class DAOAccount extends DBContext {
                     listt.add(dhh.getHouseById(resultSett.getInt(3)));
                 }
                 a.setHistory(listt);
-                
+
                 return a;
             }
         } catch (Exception e) {
@@ -112,7 +116,7 @@ public class DAOAccount extends DBContext {
         }
         return null;
     }
-    
+
     public Account getAccountByEmail(String email) {
         String sql = "SELECT * FROM Account WHERE Email = ?";
         try {
@@ -133,7 +137,7 @@ public class DAOAccount extends DBContext {
                         rs.getInt(10),
                         rs.getInt(11),
                         rs.getString(12));
-                
+
                 List<House> list = new ArrayList<>();
                 DAOHouse dh = new DAOHouse();
 
@@ -141,13 +145,13 @@ public class DAOAccount extends DBContext {
                 PreparedStatement ptm = conn.prepareStatement(xSQL);
                 ptm.setInt(1, rs.getInt(1));
                 ResultSet resultSet = ptm.executeQuery();
-                
+
                 while (resultSet.next()) {
                     list.add(dh.getHouseById(resultSet.getInt(3)));
 
                 }
                 a.setFavourites(list);
-                
+
                 List<House> listt = new ArrayList<>();
                 DAOHouse dhh = new DAOHouse();
 
@@ -159,7 +163,7 @@ public class DAOAccount extends DBContext {
                     listt.add(dhh.getHouseById(resultSett.getInt(3)));
                 }
                 a.setHistory(listt);
-                
+
                 return a;
             }
         } catch (Exception e) {
@@ -195,7 +199,7 @@ public class DAOAccount extends DBContext {
         }
         return null;
     }
-    
+
     public void changeInformation(String fullName, String address, String phone, Boolean gender, String picture, String email) {
         try {
             String stmSql = "update Account set Fullname = ? , Address = ? , Phone_Number = ? , Gender = ? , Profile_Picture = ? "
@@ -398,14 +402,15 @@ public class DAOAccount extends DBContext {
         }
         return null;
     }
-    public List<Messengers> getListMessengers(int Receiver_ID,String name) {
+
+    public List<Messengers> getListMessengers(int Receiver_ID, String name) {
         try {
             List<Messengers> lsMgr = new ArrayList<>();
             String stmSql = "select m.Sender_ID,a.Fullname,m.Sent_Date,m.Content,a.Profile_Picture from Messages as m inner join Account as a on m.Sender_ID = a.Id where m.Receiver_ID = ? and a.Fullname like ? and m.id in (select max(Id) from Messages where Receiver_ID = ? group by Sender_ID,Receiver_ID)";
             Connection conn = new DBContext().getConnection();
             PreparedStatement ps = conn.prepareStatement(stmSql);
             ps.setInt(1, Receiver_ID);
-            ps.setString(2, "%"+name+"%");
+            ps.setString(2, "%" + name + "%");
             ps.setInt(3, Receiver_ID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -418,7 +423,8 @@ public class DAOAccount extends DBContext {
         }
         return null;
     }
-     public int getNewMessgageId(int senderId, int receiverId){
+
+    public int getNewMessgageId(int senderId, int receiverId) {
         try {
             String stmSql = "select max(Id) from Messages where (Sender_ID = ? and Receiver_ID = ?) or (Sender_ID = ? and Receiver_ID = ?)";
             Connection conn = new DBContext().getConnection();
@@ -428,7 +434,7 @@ public class DAOAccount extends DBContext {
             ps.setInt(2, receiverId);
             ps.setInt(3, receiverId);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 return rs.getInt(1);
             }
         } catch (Exception e) {
@@ -436,6 +442,7 @@ public class DAOAccount extends DBContext {
         }
         return 0;
     }
+
     public void insertMessages(int senderId, int receiverId, String inbox) {
         try {
             if (senderId == receiverId) {
@@ -460,12 +467,13 @@ public class DAOAccount extends DBContext {
             System.out.println(e.getMessage());
         }
     }
+
     public void deleteMessage(int id, int senderId, int account) {
         try {
             String stmSql = "update Messages";
-            if(senderId == account){
+            if (senderId == account) {
                 stmSql += " set Deleted_By_Sender = ? where Id = ?";
-            }else{
+            } else {
                 stmSql += " set Deleted_By_Receiver = ? where Id = ?";
             }
             Connection conn = new DBContext().getConnection();
@@ -477,11 +485,143 @@ public class DAOAccount extends DBContext {
             System.out.println(e.getMessage());
         }
     }
+
     public static void main(String[] args) {
         DAOAccount dao = new DAOAccount();
         Account acc = dao.getAccountById(12);
         System.out.println(acc);
     }
+
     ////test
+    public ArrayList<Account> getAllAccount(int offset, int recordsPerPage, String textSearch, int status) {
+        ArrayList<Account> list = new ArrayList<>();
+        try {
+            //sql to select all account from database
+            String sql = "SELECT *\n"
+                    + "  FROM [dbo].[Account]\n"
+                    + "  Where Role_ID != ?\n";
+
+            HashMap<Integer, Object> setter = new HashMap<>();
+            int count = 0;
+
+            //select without admin account
+            setter.put(++count, Constants.RoleAdmin);
+
+            //check user search with text search or not
+            if (!textSearch.isEmpty() && !textSearch.equalsIgnoreCase("")) {
+                textSearch = "%" + textSearch + "%";
+                sql += " and (Fullname like ? or Address like ? or Email like ? or Phone_Number like ?)\n";
+                setter.put(++count, textSearch);
+                setter.put(++count, textSearch);
+                setter.put(++count, textSearch);
+                setter.put(++count, textSearch);
+            }
+
+            //check user search with status or not
+            if (status != -1) {
+                sql += " and Status = ?\n";
+                setter.put(++count, status);
+            }
+
+            //get number of account according to paniation
+            sql += " order by Id\n"
+                    + "  offset ? row\n"
+                    + "  FETCH next ? rows only";
+            setter.put(++count, offset);
+            setter.put(++count, recordsPerPage);
+
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement stm = conn.prepareStatement(sql);
+            for (Map.Entry<Integer, Object> entry : setter.entrySet()) {
+                stm.setObject(entry.getKey(), entry.getValue());
+            }
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Account a = new Account(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getBoolean(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getInt(10),
+                        rs.getInt(11),
+                        rs.getString(12));
+                list.add(a);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    public int getTotalAccount(String textSearch, int status) {
+        try {
+            //sql to select all account from database
+            String sql = "SELECT count(*) as total\n"
+                    + "  FROM [dbo].[Account]\n"
+                    + "  Where Role_ID != ?\n";
+
+            HashMap<Integer, Object> setter = new HashMap<>();
+            int count = 0;
+
+            //select without admin account
+            setter.put(++count, Constants.RoleAdmin);
+
+            //check user search with text search or not
+            if (!textSearch.isEmpty() && !textSearch.equalsIgnoreCase("")) {
+                textSearch = "%" + textSearch + "%";
+                sql += " and (Fullname like ? or Address like ? or Email like ? or Phone_Number like ?)\n";
+                setter.put(++count, textSearch);
+                setter.put(++count, textSearch);
+                setter.put(++count, textSearch);
+                setter.put(++count, textSearch);
+            }
+
+            //check user search with status or not
+            if (status != -1) {
+                sql += " and Status = ?\n";
+                setter.put(++count, status);
+            }
+
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement stm = conn.prepareStatement(sql);
+            for (Map.Entry<Integer, Object> entry : setter.entrySet()) {
+                stm.setObject(entry.getKey(), entry.getValue());
+            }
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public void updateStatusAccount(int accountID, int status) {
+        try {
+            String sql = "UPDATE [dbo].[Account]\n"
+                    + "   SET [Status] = ?\n"
+                    + " WHERE Id = ?";
+            Connection conn = new DBContext().getConnection();
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setInt(1, status);
+            stm.setInt(2, accountID);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(DAOAccount.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }

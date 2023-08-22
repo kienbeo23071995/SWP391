@@ -17,6 +17,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
         <style>
             .dropdown-menu {
                 display: none;
@@ -53,8 +55,8 @@
                             <a rel="nofollow" class="btn" href="favourites"><i class="fas fa-heart"></i> Yêu thích <span
                                     class="number-count js-save-post-total">${sessionScope.acc.favourites.size()}</span></a>
 
-<!--                            <a rel="nofollow" class="btn" href="historyhouse"><i class="fas fa-history"></i> Lịch sử <span
-                                    class="number-count js-save-post-total">${sessionScope.acc.history.size()}</span></a>       -->
+                            <!--                            <a rel="nofollow" class="btn" href="historyhouse"><i class="fas fa-history"></i> Lịch sử <span
+                                                                class="number-count js-save-post-total">${sessionScope.acc.history.size()}</span></a>       -->
 
                             <a rel="nofollow" class="btn" href="message"><i class="fab fa-facebook-messenger"></i> Nhắn tin</a>
 
@@ -93,8 +95,8 @@
                             <a rel="nofollow" class="btn" href="favourites"><i class="fas fa-heart"></i> Yêu thích <span
                                     class="number-count js-save-post-total">${sessionScope.acc.favourites.size()}</span></a>
 
-<!--                            <a rel="nofollow" class="btn" href="historyhouse"><i class="fas fa-history"></i> Lịch sử <span
-                                    class="number-count js-save-post-total">${sessionScope.acc.history.size()}</span></a> -->
+                            <!--                            <a rel="nofollow" class="btn" href="historyhouse"><i class="fas fa-history"></i> Lịch sử <span
+                                                                class="number-count js-save-post-total">${sessionScope.acc.history.size()}</span></a> -->
                             <a rel="nofollow" class="btn" href="message"><i class="fab fa-facebook-messenger"></i> Nhắn tin</a>
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -102,6 +104,40 @@
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                     <li><a class="dropdown-menu-item thong-tin-ca-nhan" rel="nofollow" href="changeinformation"><i class="fas fa-user-check"></i> Thông tin cá nhân</a></li>
+                                    <li><a class="dropdown-menu-item quan-ly-tin-dang" rel="nofollow" href="manageblogs"><i class="fas fa-receipt"></i> Quản lý tin tức</a></li>
+                                    <li><a class="dropdown-menu-item tin-da-luu" rel="nofollow" href="favourites"><i class="fas fa-heart"></i> Tin nhà đã lưu</a></li>
+                                    <li><a class="dropdown-menu-item thong-tin-ca-nhan" rel="nofollow" href="listfavouriteblog"><i class="fab fa-gratipay"></i> Tin tức đã lưu</a></li>
+                                    <li><a rel="nofollow" class="dropdown-menu-item thong-tin-ca-nhan" href="historyhouse"><i class="fas fa-history"></i> Lịch sử xem </a></li>
+                                    <li><a class="dropdown-menu-item thoat js-user-logout" rel="nofollow" href="logout"><i class="fas fa-sign-out-alt"></i> Thoát</a></li>
+                                </ul>
+                            </div>            
+                        </div>
+                    </c:if>
+                    <c:if test="${sessionScope.acc.getRole_ID() == 1}">
+                        <div class="user-welcome clearfix js-reload-html-header"><a class="welcome-text"
+                                                                                    href="changeinformation" rel="nofollow">
+                                <img src="https://phongtro123.com/images/default-user.png"
+                                     style="border: 1px solid #ddd; width: 40px; height: 40px; border-radius: 50%; margin-right: 5px;">
+                                <div>
+                                    <span
+                                        style="display: block;font-size: 1.2rem;margin-bottom: 3px;max-width: 300px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">Xin
+                                        chào, <strong>${sessionScope.acc.fullname}</strong></span><span style="font-size: 0.9rem">Mã tài khoản:
+                                        <strong>${sessionScope.acc.id}</strong></span>
+                                </div>
+                            </a>
+                            <a rel="nofollow" class="btn" href="favourites"><i class="fas fa-heart"></i> Yêu thích <span
+                                    class="number-count js-save-post-total">${sessionScope.acc.favourites.size()}</span></a>
+
+                            <!--                            <a rel="nofollow" class="btn" href="historyhouse"><i class="fas fa-history"></i> Lịch sử <span
+                                                                class="number-count js-save-post-total">${sessionScope.acc.history.size()}</span></a> -->
+                            <a rel="nofollow" class="btn" href="message"><i class="fab fa-facebook-messenger"></i> Nhắn tin</a>
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-th-large"></i> Quản lý tài khoản
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <li><a class="dropdown-menu-item thong-tin-ca-nhan" rel="nofollow" href="changeinformation"><i class="fas fa-user-check"></i> Thông tin cá nhân</a></li>
+                                    <li><a class="dropdown-menu-item thong-tin-ca-nhan" rel="nofollow" href="manageAccount"><i class="fas fa-user"></i> Quản lý tài khoản</a></li>
                                     <li><a class="dropdown-menu-item quan-ly-tin-dang" rel="nofollow" href="manageblogs"><i class="fas fa-receipt"></i> Quản lý tin tức</a></li>
                                     <li><a class="dropdown-menu-item tin-da-luu" rel="nofollow" href="favourites"><i class="fas fa-heart"></i> Tin nhà đã lưu</a></li>
                                     <li><a class="dropdown-menu-item thong-tin-ca-nhan" rel="nofollow" href="listfavouriteblog"><i class="fab fa-gratipay"></i> Tin tức đã lưu</a></li>
@@ -134,5 +170,10 @@
                 });
             });
         </script>
+        <script src="assets/css/notification/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <script src="assets/css/notification/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="assets/css/notification/js/main.js" type="text/javascript"></script>
+        <script src="assets/css/notification/js/owl.carousel.min.js" type="text/javascript"></script>
+        <script src="assets/css/notification/js/popper.min.js" type="text/javascript"></script>
     </body>
 </html>
