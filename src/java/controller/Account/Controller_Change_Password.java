@@ -6,6 +6,7 @@ package controller.Account;
 
 import Dao.DAOAccount;
 import Model.Account;
+import Ulti.EncodeMD5;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,7 +14,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 
 /**
  *
@@ -87,6 +87,11 @@ public class Controller_Change_Password extends HttpServlet {
         } else {
             if (check.checkExistPassword(email, oldPassword)) {
                 if (newPassword.equals(confirmPassword)) {
+
+                    //encode password
+                    EncodeMD5 encode = new EncodeMD5();
+                    newPassword = encode.EncoderMD5(newPassword);
+                    
                     change.changePassword(email, newPassword);
                     response.sendRedirect("homeController");
                 } else {

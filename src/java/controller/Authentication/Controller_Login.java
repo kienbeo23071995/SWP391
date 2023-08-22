@@ -6,6 +6,7 @@ package controller.Authentication;
 
 import Dao.DAOAccount;
 import Model.Account;
+import Ulti.EncodeMD5;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -58,6 +59,10 @@ public class Controller_Login extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
+        //encode password
+        EncodeMD5 encode = new EncodeMD5();
+        password = encode.EncoderMD5(password);
+        
         DAOAccount Dao = new DAOAccount();
         Account acc = Dao.Login(email, password);
         if (acc == null) {

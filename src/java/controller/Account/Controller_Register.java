@@ -8,6 +8,7 @@ import Dao.DAOAccount;
 import Model.Account_Role;
 import Model.Secure_Answers;
 import Model.Secure_Questions;
+import Ulti.EncodeMD5;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -150,6 +151,11 @@ public class Controller_Register extends HttpServlet {
                     } else {
                         Pattern f = Pattern.compile("^[a-zA-Z\\s]+$");
                         if (f.matcher(fullname).find()) {
+
+                            //encode password
+                            EncodeMD5 encode = new EncodeMD5();
+                            password = encode.EncoderMD5(password);
+                            
                             check.addAccount(fullname, gender, address, email, password, phone, roleId, questionId, answerId, picture);
                             response.sendRedirect("login");
                         } else {

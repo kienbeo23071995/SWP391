@@ -8,6 +8,7 @@ import controller.*;
 import Dao.DAOAccount;
 import Model.Secure_Answers;
 import Model.Secure_Questions;
+import Ulti.EncodeMD5;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -20,7 +21,7 @@ import java.util.regex.Pattern;
 
 /**
  *
- * 
+ *
  */
 public class Controller_Forgot_Password extends HttpServlet {
 
@@ -111,6 +112,11 @@ public class Controller_Forgot_Password extends HttpServlet {
                     request.getRequestDispatcher("forgotpass.jsp").forward(request, response);
                 } else {
                     if (a.checkSecure(email, idQ, idA)) {
+
+                        //encode password
+                        EncodeMD5 encode = new EncodeMD5();
+                        newPass = encode.EncoderMD5(newPass);
+
                         a.changePassword(email, newPass);
                         response.sendRedirect("login");
                     } else {
