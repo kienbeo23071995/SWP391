@@ -95,6 +95,7 @@ public class ManageAccountController extends HttpServlet {
         String msg = (String) request.getSession().getAttribute("msg");
         if (msg != null) {
             request.setAttribute("msg", msg);
+            request.getSession().setAttribute("msg", null);
         }
         
         //box data to send to client

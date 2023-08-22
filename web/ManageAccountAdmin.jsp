@@ -128,73 +128,82 @@
                                             </c:if>
                                         </td>
                                         <td>
-                                            <c:if test="${a.getStatus() == 0}">
-                                                <!--Edit button--> 
-                                                <button type="button" class="btn btn-success me-2" data-bs-toggle="modal"
-                                                        data-bs-target="#updateItem_${a.getId()}">
-                                                    <i class="fa-solid fa-check"></i>
-                                                </button>
-                                                <!--Modal Edit Detail-->
-                                                <div class="modal fade" id="updateItem_${a.getId()}" tabindex="-1"
-                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-lg modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Cập nhật trạng thái tài khoản</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <h6>Bạn có muốn chuyển trạng thái tài khoản có ID: ${a.getId()} thành hoạt động?</h6>
-                                                                <form method="POST" action="manageAccount" class="register-form"
-                                                                      id="register-form">
-                                                                    <input type="hidden" value="active" name="action"/>
-                                                                    <input type="hidden" value="${a.getId()}" name="accountID"/>
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">
-                                                                        Đóng
-                                                                    </button>
-                                                                    <button type="submit" class="btn btn-primary">Lưu</button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </c:if>
-                                            <c:if test="${a.getStatus() == 1}">
-                                                <!--Edit button--> 
-                                                <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal"
-                                                        data-bs-target="#updateItem_${a.getId()}">
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </button>
-                                                <!--Modal Edit Detail-->
-                                                <div class="modal fade" id="updateItem_${a.getId()}" tabindex="-1"
-                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-lg modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Cập nhật trạng thái tài khoản</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                        aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <h6>Bạn có muốn chuyển trạng thái tài khoản có ID: ${a.getId()} thành không hoạt động?</h6>
-                                                                <form method="POST" action="manageAccount" class="register-form"
-                                                                      id="register-form">
-                                                                    <input type="hidden" value="deactive" name="action"/>
-                                                                    <input type="hidden" value="${a.getId()}" name="accountID"/>
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                            data-bs-dismiss="modal">
-                                                                        Đóng
-                                                                    </button>
-                                                                    <button type="submit" class="btn btn-primary">Lưu</button>
-                                                                </form>
+                                            <div class="justify-content-center d-flex gap-2">
+                                                <!--View Profile button--> 
+                                                <form action="viewProfile" method="post">
+                                                    <input type="hidden" value="${a.getId()}" name="accountID">
+                                                    <button type="submit" class="btn btn-success me-2">
+                                                        <i class="fa-solid fa-eye"></i>
+                                                    </button>
+                                                </form>
+                                                <c:if test="${a.getStatus() == 0}">
+                                                    <!--Edit button--> 
+                                                    <button type="button" class="btn btn-success me-2" data-bs-toggle="modal"
+                                                            data-bs-target="#updateItem_${a.getId()}">
+                                                        <i class="fa-solid fa-check"></i>
+                                                    </button>
+                                                    <!--Modal Edit Detail-->
+                                                    <div class="modal fade" id="updateItem_${a.getId()}" tabindex="-1"
+                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Cập nhật trạng thái tài khoản</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <h6>Bạn có muốn chuyển trạng thái tài khoản có ID: ${a.getId()} thành hoạt động?</h6>
+                                                                    <form method="POST" action="manageAccount" class="register-form"
+                                                                          id="register-form">
+                                                                        <input type="hidden" value="active" name="action"/>
+                                                                        <input type="hidden" value="${a.getId()}" name="accountID"/>
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">
+                                                                            Đóng
+                                                                        </button>
+                                                                        <button type="submit" class="btn btn-primary">Lưu</button>
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </c:if>
+                                                </c:if>
+                                                <c:if test="${a.getStatus() == 1}">
+                                                    <!--Edit button--> 
+                                                    <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal"
+                                                            data-bs-target="#updateItem_${a.getId()}">
+                                                        <i class="fa-solid fa-xmark"></i>
+                                                    </button>
+                                                    <!--Modal Edit Detail-->
+                                                    <div class="modal fade" id="updateItem_${a.getId()}" tabindex="-1"
+                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Cập nhật trạng thái tài khoản</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <h6>Bạn có muốn chuyển trạng thái tài khoản có ID: ${a.getId()} thành không hoạt động?</h6>
+                                                                    <form method="POST" action="manageAccount" class="register-form"
+                                                                          id="register-form">
+                                                                        <input type="hidden" value="deactive" name="action"/>
+                                                                        <input type="hidden" value="${a.getId()}" name="accountID"/>
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                                data-bs-dismiss="modal">
+                                                                            Đóng
+                                                                        </button>
+                                                                        <button type="submit" class="btn btn-primary">Lưu</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </c:if>
                                         </td>
+                                        </div>
                                     </tr>
                                 </c:forEach>
                             </tbody>
