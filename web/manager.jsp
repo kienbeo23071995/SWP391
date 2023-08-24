@@ -69,7 +69,7 @@
                                         </div>
                                     </div>
                                     <a class="btn btn-danger btn-sm d-none d-md-block"
-                                       href="dangtin">Đăng tin mới</a>
+                                       href="posthouse">Đăng tin mới</a>
 
                                 </div>
 
