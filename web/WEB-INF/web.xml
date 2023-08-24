@@ -171,6 +171,18 @@
         <servlet-name>ViewProfileController</servlet-name>
         <servlet-class>controller.Admin.ViewProfileController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DashboardAdminController</servlet-name>
+        <servlet-class>controller.Admin.DashboardAdminController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DashboardOwnerController</servlet-name>
+        <servlet-class>controller.House.DashboardOwnerController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateBillController</servlet-name>
+        <servlet-class>controller.Bill.CreateBillController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controller_Login</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -345,6 +357,18 @@
     <servlet-mapping>
         <servlet-name>ViewProfileController</servlet-name>
         <url-pattern>/viewProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DashboardAdminController</servlet-name>
+        <url-pattern>/dashboardAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DashboardOwnerController</servlet-name>
+        <url-pattern>/dashboardOwner</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateBillController</servlet-name>
+        <url-pattern>/createBill</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -61,7 +61,7 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
-            
+
         </style>
         <title>Quản lý tin đăng blogs</title>
     </head>
@@ -73,7 +73,7 @@
                     <div class="row">
                     <jsp:include page="sidebar.jsp"></jsp:include>   
                         <main role="main" class="ml-sm-auto col-lg-10">
-                            
+
                             <div
                                 class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                                 <h1 class="h2">Quản lý tin tức</h1>
@@ -126,10 +126,10 @@
                                                 </td>
                                                 <td style="width: 25%">
                                                     <a class="post_title" target="_self" href="detailblog?id=${b.getId()}&idPoster=${b.getPosterId()}" style="color: black;">${b.getTopic()}</a>
-                                                   
+
                                                     <div class="post_btn_toolbar mt-3">
 <!--                                                        <a style="background-color: #52a4fa;color: white" href="editblog?id=${b.getId()}&nav=null"-->
-                                                            <a href="editblog?id=${b.getId()}&nav=null"
+                                                        <a href="editblog?id=${b.getId()}&nav=null"
                                                            class="btn btn-sm"><svg xmlns="http://www.w3.org/2000/svg"
                                                                                 width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -137,7 +137,7 @@
                                                             <polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon>
                                                             </svg> Sửa tin</a>
 <!--                                                        <a style="background-color: #f75757;color: white" href="deleteblog?id=${b.getId()}&nav=null"-->
-                                                             <a href="deleteblog?id=${b.getId()}&nav=null"
+                                                        <a href="" onclick="deletePost(${b.getId()})"
                                                            class="btn btn-sm">
                                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h4a1 1 0 1 1 0 2h-1.069l-.867 12.142A2 2 0 0 1 17.069 22H6.93a2 2 0 0 1-1.995-1.858L4.07 8H3a1 1 0 0 1 0-2h4V4zm2 2h6V4H9v2zM6.074 8l.857 12H17.07l.857-12H6.074z" fill="#0D0D0D"/>
                                                             </svg> Xoá tin</a>
@@ -150,15 +150,15 @@
                                                 <td style="width: 15%">${b.getPostTime()}</td>
                                             </tr>
                                         </c:forEach>
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
 
-
-                                <!-- end pagination -->
+                                    </tbody>
+                                </table>
                             </div>
-                            <br>
+
+
+                            <!-- end pagination -->
+                        </div>
+                        <br>
                         <c:if test="${countB != 0}"> 
                             <div class="numberP">
                                 <c:forEach begin="1" end="${endPage}" step="1" var="i">
@@ -213,6 +213,12 @@
                     $('.dropdown-menu').toggle();
                 });
             });
+            function deletePost(i){
+                var confirm = confirm('Do you want to delete?');
+                if(confirm){
+                    window.location.href="deleteblog?id=" + i + "&nav=null"
+                }
+            }
         </script>
     </body>
 

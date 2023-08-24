@@ -17,6 +17,8 @@ public class Bill {
     private int houseID;
     private Date startDate;
     private Date endDate;
+    private Date createdDate;
+    private Date updatedDate;
 
     public Bill(int id, int rent, int houseID, Date startDate, Date endDate) {
         this.id = id;

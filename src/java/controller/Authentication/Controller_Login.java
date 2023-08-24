@@ -59,9 +59,9 @@ public class Controller_Login extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        //encode password
-        EncodeMD5 encode = new EncodeMD5();
-        password = encode.EncoderMD5(password);
+//        //encode password
+//        EncodeMD5 encode = new EncodeMD5();
+//        password = encode.EncoderMD5(password);
         
         DAOAccount Dao = new DAOAccount();
         Account acc = Dao.Login(email, password);

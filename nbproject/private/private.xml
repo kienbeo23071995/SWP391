@@ -3,11 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Bill/CreateBillController.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/House/Controller_Detail_House.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/Ulti/Constants.java</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/web/house_detail.jsp</file>
-            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/SWP391/src/java/controller/Authentication/Controller_LoginGoogle.java</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/MinhChien/src/java/Dao/DAOAccount.java</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/MinhChien/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/MinhChien/src/java/controller/Blog/Controller_Manage_Blog.java</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/MinhChien/src/java/controller/Authentication/Controller_Login.java</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/MinhChien/web/CreateBill.jsp</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/MinhChien/src/java/Model/Bill.java</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/MinhChien/src/java/context/DBContext.java</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/MinhChien/src/java/controller/Bill/CreateBillController.java</file>
+            <file>file:/C:/Users/kienb/OneDrive/Máy%20tính/MinhChien/web/manageblog.jsp</file>
         </group>
     </open-files>
 </project-private>
